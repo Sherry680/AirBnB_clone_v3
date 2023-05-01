@@ -1,3 +1,3 @@
 #AUTHORS
-#elvin Mwanzia <wambuakelvin14@gmail.com>
-#asungulo Godi <masungulogodi3@gmail.com>
+#Faith Njeri <faithnjeri506@gmail.com>
+#Curtis Sila <curtissila4@gmail.com>
