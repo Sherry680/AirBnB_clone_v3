@@ -1,31 +1,32 @@
 #!/usr/bin/python3
-
-""" holds class State"""
+"""
+State Class from Models Module
+"""
+import os
 import models
 from models.base_model import BaseModel, Base
-from models.city import City
-from models.place import Place
-from os import getenv
-import sqlalchemy
-from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, Float
+STORAGE_TYPE = os.environ.get('HBNB_TYPE_STORAGE')
 
 
 class State(BaseModel, Base):
-    """Representation of state """
-    __tablename__ = 'states'
-    if getenv('HBNB_TYPE_STORAGE') == 'db':
+    """State class handles all application states"""
+    if STORAGE_TYPE == "db":
+        __tablename__ = 'states'
         name = Column(String(128), nullable=False)
-        cities = relationship("City", backref="state", cascade="all, delete")
+        cities = relationship('City', backref='state', cascade='delete')
     else:
-        name = ""
+        name = ''
 
         @property
         def cities(self):
-            """getter for list of city instances related to the state"""
+            """
+                getter method, returns list of City objs from storage
+                linked to the current State
+            """
             city_list = []
-            all_cities = (models.storage.all(City))
-            for city in list(all_cities.values()):
+            for city in models.storage.all("City").values():
                 if city.state_id == self.id:
                     city_list.append(city)
             return city_list
