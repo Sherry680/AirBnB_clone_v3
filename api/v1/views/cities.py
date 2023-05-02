@@ -61,3 +61,4 @@ def cities_with_id(city_id=None):
             abort(400, 'Not a JSON')
         city_obj.bm_update(req_json)
         return jsonify(city_obj.to_json()), 200
+

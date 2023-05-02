@@ -58,3 +58,4 @@ def user_with_id(user_id=None):
             abort(400, 'Not a JSON')
         user_obj.bm_update(req_json)
         return jsonify(user_obj.to_json()), 200
+
