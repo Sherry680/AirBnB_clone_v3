@@ -1,0 +1,5 @@
+# files not needed
+__pycache__/
+versions/
+*main*.py
+test_get_count.py
